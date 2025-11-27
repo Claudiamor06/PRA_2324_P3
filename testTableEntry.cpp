@@ -1,20 +1,26 @@
 #include <iostream>
 #include "TableEntry.h"
 
-int main() {
-    TableEntry<int> e1("uno", 1);
-    TableEntry<int> e2("dos", 2);
-    TableEntry<int> e3("uno", 99);
+int main(){
+    std::cout << std::boolalpha; // configuramos cout para mostrar true/false en lugar de 0/1.
 
-    std::cout << e1 << std::endl;
-    std::cout << e2 << std::endl;
+    TableEntry<int> e1("Catorze", 14);
+    TableEntry<int> e2("Trenta-tres", 33);
+    TableEntry<int> e3("Trenta-tres", 123);
 
-    if (e1 == e3)
-        std::cout << "e1 y e3 tienen la misma clave" << std::endl;
-
-    if (e1 != e2)
-        std::cout << "e1 y e2 tienen claves distintas" << std::endl;
-
+    std::cout << "e1: " << e1 << std::endl;
+    std::cout << "e2: " << e2 << std::endl;
+    std::cout << "e3: " << e3 << std::endl;
+    
+    std::cout << std::endl;
+    
+    std::cout << "e1 == e2 ? " << (e1 == e2) << std::endl;
+    std::cout << "e1 != e2 ? " << (e1 != e2) << std::endl;
+    std::cout << std::endl;
+    std::cout << "e1 == e3 ? " << (e1 == e3) << std::endl;
+    std::cout << "e1 != e3 ? " << (e1 != e3) << std::endl;
+    std::cout << std::endl;
+    std::cout << "e2 == e3 ? " << (e2 == e3) << std::endl;
+    std::cout << "e2 != e3 ? " << (e2 != e3) << std::endl;
     return 0;
 }
-
