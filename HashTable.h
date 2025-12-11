@@ -6,7 +6,6 @@
 #include "Dict.h"
 #include "TableEntry.h"
 
-// Ajusta la ruta según dónde tengas ListLinked.h
 #include "../PRA_2324_P1/ListLinked.h"
 
 template <typename V>
