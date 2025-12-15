@@ -6,19 +6,20 @@
 template <typename T>
 class BSNode {
     public:
-        // Atributos públicos
         T elem;                 // Elemento almacenado en el nodo
-        BSNode<T>* left;        // Puntero al sucesor izquierdo
-        BSNode<T>* right;       // Puntero al sucesor derecho
+        BSNode<T>* left;        // Puntero al hijo izquierdo
+        BSNode<T>* right;       // Puntero al hijo derecho
 
-        // Constructor
+        // Constructor (crea un nodo con un dato e hijos izquierdo y derecho)
         BSNode(T elem, BSNode<T>* left = nullptr, BSNode<T>* right = nullptr)
             : elem(elem), left(left), right(right) {}
 
-        // Sobrecarga del operador << como función amiga
+        // Sobrecarga del operador << para imprimir el nodo
         friend std::ostream& operator<<(std::ostream &out, const BSNode<T> &bsn) {
+	    // Imprime solo el dato del nodo
             out << bsn.elem;
-            return out;
+            // Devuelve el stream para seguir imprumiendo
+	    return out;
         }
 };
 
