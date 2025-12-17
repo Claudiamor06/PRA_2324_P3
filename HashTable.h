@@ -8,13 +8,19 @@
 
 #include "../PRA_2324_P1/ListLinked.h"
 
+// Permite almacenar valores de cualquier tipo V
 template <typename V>
+// Hereda de Dict V
 class HashTable : public Dict<V> {
 private:
-    int n;   // número de elementos
-    int max; // número de cubetas
-    ListLinked<TableEntry<V>>* table; // array de listas
+// Numero de elementos almacenados en la tabla
+    int n;   
+// Numero de cubetas (tamaño del array)
+    int max;
+// Array dinamico de listas enlazadas
+    ListLinked<TableEntry<V>>* table;
 
+// Funcion Hash: convierte una clave string en un indice entre 0 y max-1
     int h(std::string key) {
         int suma = 0;
         for (size_t i = 0; i < key.size(); i++) {
