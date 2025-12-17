@@ -20,7 +20,7 @@ private:
 // Array dinamico de listas enlazadas
     ListLinked<TableEntry<V>>* table;
 
-// Funcion Hash: convierte una clave string en un indice entre 0 y max-1
+// Funcion Hash: convierte una clave string en un indice entre 0 y max-1, suma los codigos ASCII de los caracteres y hace modulo max
     int h(std::string key) {
         int suma = 0;
         for (size_t i = 0; i < key.size(); i++) {
@@ -30,16 +30,20 @@ private:
     }
 
 public:
+
+// Constructor: crea la tabla hash con un numero de cubetas dado, inicializa n a cero y reserva memoria para las listas
     HashTable(int size) {
         max = size;
         n = 0;
         table = new ListLinked<TableEntry<V>>[max];
     }
 
+// Destructor: libera la memoria del array dinamico de listas
     ~HashTable() {
         delete[] table;
     }
 
+// Inserta elemento: calcula la cubeta con el hash, comprueba si la clave ya existe y la inserta al final de la lista correspondiente
     void insert(std::string key, V value) override {
         int idx = h(key);
         TableEntry<V> entrada(key, value);
@@ -50,6 +54,7 @@ public:
         n++;
     }
 
+// Busca el elemento: calcula la cubeta, busca la clave en la lista y si existe devuelve el valor
     V search(std::string key) override {
         int idx = h(key);
         TableEntry<V> entrada(key);
@@ -60,6 +65,7 @@ public:
         return table[idx].get(pos).value;
     }
 
+// Elimina el elemento: calcula la cubeta, busca la clave, la elimina y devuelve su valor
     V remove(std::string key) override {
         int idx = h(key);
         TableEntry<V> entrada(key);
@@ -73,14 +79,17 @@ public:
         return val;
     }
 
+// Devuelve cuantos elementos hay en la tabla
     int entries() override {
         return n;
     }
 
+// Devuelve cuantas cubetas tiene la tabla
     int capacity() {
         return max;
     }
 
+// Es el que permite imprimir la tabla hash completa recorriendo todas las cubetas y sus listas
     V operator[](std::string key) {
         return search(key);
     }
